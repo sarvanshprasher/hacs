@@ -19,7 +19,7 @@ public class Course {
   public ArrayList<Assignment> assignmentList=new ArrayList<Assignment>();
   int NumOfAss;
   int CourseLevel;
-
+  
 
   public Course(String strCourse, int theLevel) {
     this.CourseName = strCourse;
@@ -30,19 +30,28 @@ public class Course {
     this.NumOfAss = 0;
   }
   
-  public void AddAssignment(Assignment newAss)
-  {
+  public void AddAssignment(Assignment newAss){
+	  
     assignmentList.add(newAss);
+    
   }
   
-  public String toString()
-  {
+  public String toString(){
+	  
     return CourseName;
+    
   }
   
-  void accept(NodeVisitor visitor)
-  {
+  void accept(NodeVisitor visitor){
+	  
     visitor.visitCourse(this);
+    
+  }
+  
+  public int getListSize() { 
+	  
+	return assignmentList.size();	 
+	
   }
 
 }

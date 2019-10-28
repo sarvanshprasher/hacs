@@ -11,15 +11,11 @@ import org.junit.jupiter.api.Test;
 
 import hacs.Assignment;
 import hacs.Solution;
-
+import hacs.SolutionIterator;
 
 class TestAssignment {
 	
-	final Assignment assignment = new Assignment();
-	
-	final Solution solution = new Solution();
-	
-	final List<Solution> solutionList = new ArrayList<Solution>();
+	final Assignment assignment = new Assignment();	
 	
 	@Test
 	void TestSetDueDate(){ 
@@ -37,6 +33,9 @@ class TestAssignment {
 	@Test
 	void TestSetAssSpec(){ 
 		
+		
+		
+		
 	}
 	
 	
@@ -49,6 +48,29 @@ class TestAssignment {
 		
 	}
 	
+	@Test
+	void TestAddSolution() {
+		
+		Solution solution = new Solution();
+		
+	    assertEquals(true, solution instanceof Solution);
+	    
+	}
+	
+	@Test
+	void TestAddSolutionList() {
+		
+		Solution mySolution = new Solution();
+		
+		assignment.AddSolution(mySolution);
+		
+	}
+	
+	@Test
+	void TestgetSolution() {
+		
+		SolutionIterator solutionIterator = new SolutionIterator();
+	}
 	
 	
 }
