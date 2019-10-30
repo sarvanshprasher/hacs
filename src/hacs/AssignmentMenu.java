@@ -1,10 +1,6 @@
 package hacs;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import java.io.*;
-
 
 /**
  * Title:        HACS
@@ -15,9 +11,11 @@ import java.io.*;
  * @version 1.0
  */
 
+@SuppressWarnings("serial")
 abstract public class AssignmentMenu extends JDialog
 {
-  abstract void ShowMenu(Assignment ass,Person per);
+  abstract void showMenu(Assignment ass,Person per);
+  
   public AssignmentMenu()
   {
     setModal(true);

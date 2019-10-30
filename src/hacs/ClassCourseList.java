@@ -12,13 +12,15 @@ import java.io.*;
  * @version 2.0 update to Java 8
  */
 
+@SuppressWarnings("serial")
 public class ClassCourseList extends ArrayList<Course> {
 
 	public ClassCourseList() {
 	}
 
 	//// initialize the list by reading from the file.
-	void InitializeFromFile(String theFileName) {
+	@SuppressWarnings("resource")
+	void initializeFromFile(String theFileName) {
 		try {
 			BufferedReader file;
 			String strCourseName = null;
@@ -34,7 +36,7 @@ public class ClassCourseList extends ArrayList<Course> {
 		}
 	}
 
-	Course FindCourseByCourseName(String CourseName) {
+	Course findCourseByCourseName(String CourseName) {
 		int nCourseCount = size();
 		for (int i = 0; i < nCourseCount; i++) {
 			Course theCourse;

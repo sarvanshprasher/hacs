@@ -26,14 +26,16 @@ public class Facade {
 	static public boolean Login(UserInfoItem userinfoItem) {
 		Login login = new Login();
 		login.setModal(true);
-		login.show();
+
+		// set login show to setVisible(true).
+		login.setVisible(true);
 		userinfoItem.strUserName = login.GetUserName();
 		userinfoItem.UserType = login.GetUserType();
 		return login.isExit();
 	}
 
-/////////////////////////
-//functions for CourseMenu
+	/////////////////////////
+	//functions for CourseMenu
 	/*
 	 * When click the add button of the CourseMenu , call this function this
 	 * function will new an assignment fill the required infomation this function
@@ -51,8 +53,8 @@ public class Facade {
 			theAssignmentMenu = new InstructorAssignmentMenu();
 		}
 		Assignment theAssignment = new Assignment();
-		theAssignmentMenu.ShowMenu(theAssignment, thePerson);
-		theCourse.AddAssignment(theAssignment);
+		theAssignmentMenu.showMenu(theAssignment, thePerson);
+		theCourse.addAssignment(theAssignment);
 	}
 
 	/*
@@ -71,10 +73,10 @@ public class Facade {
 			theAssignmentMenu = new InstructorAssignmentMenu();
 		}
 
-		theAssignmentMenu.ShowMenu(theAssignment, thePerson);
+		theAssignmentMenu.showMenu(theAssignment, thePerson);
 	}
 
-//functions for InstructorAssignmentMenu
+	//functions for InstructorAssignmentMenu
 	/*
 	 * this function will grade the give Solution: theSolution this function calls
 	 */
@@ -87,21 +89,21 @@ public class Facade {
 	void ReportSolutions(Assignment theAssignment) {
 		Solution theSolution;
 		SolutionIterator theSolutionIterator;
-		theSolutionIterator = theAssignment.GetSolutionIterator();
+		theSolutionIterator = theAssignment.getSolutionIterator();
 		theSolution = (Solution) theSolutionIterator.next();
 		while (theSolution != null) {
 			theSolution.setReported(true);
 			theSolution = (Solution) theSolutionIterator.next();
 		}
 	}
-////////////////////
+	////////////////////
 
-//functions for StudentAssignmentMenu
+	//functions for StudentAssignmentMenu
 	void SubmitSolution(Assignment theAssignment, Solution theSolution) {
-		theAssignment.AddSolution(theSolution);
+		theAssignment.addSolution(theSolution);
 	}
 
-//////////
+	//////////
 	void Remind() {
 		Reminder theReminder = new Reminder();
 		theReminder.showReminder(thePerson.GetCourseList());
@@ -123,7 +125,7 @@ public class Facade {
 	 */
 	void CreateCourseList() {
 		theCourseList = new ClassCourseList();
-		theCourseList.InitializeFromFile("CourseInfo.txt");
+		theCourseList.initializeFromFile("CourseInfo.txt");
 	}
 
 	/*

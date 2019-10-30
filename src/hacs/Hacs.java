@@ -8,7 +8,7 @@ package hacs;
  * @author mjfindler
  * @version 2.0
  * 
- * Update to Java 8
+ *          Update to Java 8
  */
 
 public class Hacs {
@@ -19,13 +19,13 @@ public class Hacs {
 	}
 
 	public static void main(String[] args) {
-//		String strUsername;
-//		String strUserType = null;
+		//		String strUsername;
+		//		String strUserType = null;
 		UserInfoItem userinfoitem = new UserInfoItem();
 		theFacade.CreateCourseList();
 		while (true) {
 			boolean bExit = false;
-			bExit = theFacade.Login(userinfoitem);
+			bExit = Facade.Login(userinfoitem);
 			if (bExit)
 				break;
 			// userinfoitem.strUserName = "Inst1";
@@ -42,6 +42,6 @@ public class Hacs {
 				bLogout = theFacade.CourseOperation();
 			}
 		}
-//    System.out.println(userinfoitem.strUserName +userinfoitem.UserType );
+		//    System.out.println(userinfoitem.strUserName +userinfoitem.UserType );
 	}
 }

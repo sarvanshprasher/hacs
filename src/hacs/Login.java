@@ -21,6 +21,10 @@ import java.io.*;
 
 public class Login extends JDialog {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	boolean m_bExit = false;
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel2 = new JLabel();
@@ -31,7 +35,7 @@ public class Login extends JDialog {
 	JRadioButton StudentRadio = new JRadioButton();
 	JRadioButton InstructorRadio = new JRadioButton();
 	ButtonGroup buttonGroup1 = new ButtonGroup();
-////// Attributes Added By me
+	////// Attributes Added By me
 	private String UserBox = null;
 	private USER_TYPE UserType = USER_TYPE.Student; // default to Student
 
@@ -108,7 +112,10 @@ public class Login extends JDialog {
 					LoginName = UserName;
 			}
 			if (LoginName != null) {
-				this.hide();
+
+				// If login name not null then setVisible(false) for login button
+				this.setVisible(false);
+
 			}
 		} catch (Exception ee) {
 			;
@@ -148,6 +155,9 @@ public class Login extends JDialog {
 
 	void buttonExit_actionPerformed(ActionEvent e) {
 		m_bExit = true;
-		hide();
+
+		// If exit button action perfomed then setVisible(false) for exit button
+		this.setVisible(false);
+
 	}
 }

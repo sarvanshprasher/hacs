@@ -10,89 +10,121 @@ package hacs;
  */
 
 import java.util.*;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.text.DateFormat;
 
 public class Assignment {
 
-  protected String AssName;
-  protected String strAssignmentFilename;
-  protected Date DueDate=new Date();
-  protected String AssSpec;
-  protected SolutionList theSolutionList=new SolutionList();
-  protected Solution SuggestSolution=new Solution();
+	protected String AssName;
+	protected String strAssignmentFilename;
+	protected Date DueDate = new Date();
+	protected String AssSpec;
+	protected SolutionList theSolutionList = new SolutionList();
+	protected Solution SuggestSolution = new Solution();
 
+	public Assignment() {
+	}
 
+	public void setDueDate(Date theDueDate) {
+		
+		this.DueDate = theDueDate;
+	
+	}
 
-  public Assignment() {
-  }
+	public void setAssSpec(String theSpec) {
+		
+		this.AssSpec = theSpec;
+		
+	}
 
-  public void SetDueDate(Date theDueDate){
-    this.DueDate = theDueDate;
-  }
+	public boolean isOverDue() {
+		
+		Date today;
+		today = new Date();
+		if (today.after(this.DueDate)) {
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
 
-  public void SetAssSpec(String theSpec){
-    this.AssSpec = theSpec;
-  }
+	public Solution addSolution() {
+		
+		Solution mySolution = new Solution();
+		return mySolution;
+	
+	}
 
-  public boolean IsOverDue(){
-    Date today;
-    today = new Date();
-    if (today.after(this.DueDate)) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }
+	//// add the theSolution to the Solutionlist
+	public void addSolution(Solution theSolution) {
+		
+		theSolutionList.add(theSolution);
+	
+	}
 
-  public Solution AddSolution(){
-    Solution mySolution = new Solution();
-    return mySolution;
-  }
+	public void submitSolution() throws IOException {
+		
+		String fileContent = "Solution 1: Problem 1 solution";
+		BufferedWriter writer = new BufferedWriter(new FileWriter("c:/temp/solution.txt"));
+		writer.write(fileContent);
+		writer.close();
 
-  ////add the theSolution to the Solutionlist
-  public void AddSolution(Solution theSolution)
-  {
-    theSolutionList.add(theSolution);
-  }
+	}
 
-  public void SubmitSolution(){
-  }
+	public SolutionList getSolutionList() {
+		
+		return this.theSolutionList;
+	
+	}
 
-  public void getSolutionList(){
-  }
+	/*
+	 * return the solution of the give name
+	 */
+	public Solution getSolution(String studentname) {
+		
+		SolutionIterator Iterator = (SolutionIterator) theSolutionList.iterator();
+		return (Solution) Iterator.next(studentname);
+		
+	}
 
-  /* return the solution of the give name
-  */
-  public Solution getSolution(String studentname)
-  {
-    SolutionIterator Iterator=(SolutionIterator)theSolutionList.iterator();
-    return (Solution)Iterator.next(studentname);
-  }
+	public Solution getSugSolution() {
+		
+		return SuggestSolution;
+		
+	}
 
-  public Solution getSugSolution(){
-    return SuggestSolution;
-  }
+	public SolutionIterator getSolutionIterator() {
+		
+		SolutionIterator theSolutionIterator = new SolutionIterator(theSolutionList);
+		return theSolutionIterator;
+		
+	}
 
-  public SolutionIterator GetSolutionIterator()
-  {
-    SolutionIterator theSolutionIterator=new SolutionIterator(theSolutionList);
-    return theSolutionIterator;
-  }
+	public String toString() {
+		
+		return AssName;
+		
+	}
 
-  public String toString()
-  {
-    return AssName;
-  }
+	public String getDueDateString() {
+		
+		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
+		return dateFormat.format(DueDate);
+		
+	}
 
-  public String getDueDateString()
-  {
-    DateFormat dateFormat=DateFormat.getDateInstance(DateFormat.SHORT);
-    return  dateFormat.format(DueDate);
-  }
+	public String getAssSpec() {
+		
+		return AssSpec;
 
-  public void accept(NodeVisitor visitor)
-  {
-    visitor.visitAssignment(this);
-  }
+	}
+
+	public void accept(NodeVisitor visitor) {
+		
+		visitor.visitAssignment(this);
+	
+	}
 }

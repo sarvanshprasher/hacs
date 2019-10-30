@@ -1,14 +1,5 @@
 package hacs;
 
-/**
- * Title:        HACS
- * Description:
- * Copyright:    Copyright (c) 2002
- * Company:      msu
- * @author Zhang ji Zhu Wei
- * @version 1.0
- */
-import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -20,6 +11,11 @@ public class HighLevelCourseMenu extends CourseMenu {
 	 * OptionViewButton = new JButton(); JButton OptionAddButton = new JButton();
 	 */
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public HighLevelCourseMenu() {
 	}
 
@@ -27,7 +23,9 @@ public class HighLevelCourseMenu extends CourseMenu {
 		ShowViewButtons();
 		ShowRadios();
 		ShowComboxes();
-		show();
+		
+		// Made show() option to setVisible(true) when show menu is clicked for courses.
+		setVisible(true);
 	}
 
 	void ShowAddButtons() {

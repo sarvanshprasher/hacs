@@ -3,8 +3,6 @@ package hacs;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
-import java.util.*;
 
 /**
  * Title: HACS Description: Copyright: Copyright (c) 2002 Company: msu
@@ -14,6 +12,10 @@ import java.util.*;
  */
 
 public class Reminder extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ClassCourseList CourseList;
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel2 = new JLabel();
@@ -54,13 +56,17 @@ public class Reminder extends JDialog {
 	}
 
 	void showReminder(ClassCourseList courseList) {
-		Assignment assignment;
 		ReminderVisitor visitor = new ReminderVisitor(this);
 		visitor.visitFacade(Hacs.theFacade);
-		show();
+
+		// Set visible(true) for showing reminder for assignments to person.
+		setVisible(true);
 	}
 
 	void buttonOK_actionPerformed(ActionEvent e) {
-		hide();
+
+		// Set visible(false) after ok action is clicked by person.
+		setVisible(false);
+
 	}
 }

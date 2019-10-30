@@ -12,6 +12,10 @@ import java.awt.event.*;
  */
 
 public class SolutionGradingDlg extends JDialog {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Solution theSolution;
 	JLabel jLabel1 = new JLabel();
 	JTextField tfGrad = new JTextField();
@@ -51,12 +55,17 @@ public class SolutionGradingDlg extends JDialog {
 		theSolution = solution;
 		tfGrad.setText("" + theSolution.getGradeInt());
 		labelSolutionFileName.setText(theSolution.SolutionFileName);
-		show();
+
+		// For showing solution grading and setting it to setVisible(true)
+		setVisible(true);
 	}
 
 	void buttonOK_actionPerformed(ActionEvent e) {
 		theSolution.theGrade = Integer.parseInt(tfGrad.getText());
-		hide();
+
+		// For showing solution grading and setting it to setVisible(true)
+		setVisible(false);
+
 	}
 
 }

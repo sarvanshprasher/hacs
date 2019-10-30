@@ -13,13 +13,13 @@ class TestCourse {
 	 * This method is for testing assignment addition
 	 */	
 	@Test
-	void TestAddAssignment() {
+	void testAddAssignment() {
 		
 		Course course = new Course("Intro to software engineering" , 0);
 		
 		Assignment ass = new Assignment();
 		
-		course.AddAssignment(ass);
+		course.addAssignment(ass);
 		
 		assertEquals(1,course.getListSize());
 	}
@@ -28,7 +28,7 @@ class TestCourse {
 	 * This method is for testing Course name toString function
 	 */	
 	@Test
-	void TestToString() {
+	void testToString() {
 		
 		Course course = new Course("Intro to software engineering" , 0);
 		

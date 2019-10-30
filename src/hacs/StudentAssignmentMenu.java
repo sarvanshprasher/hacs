@@ -3,7 +3,6 @@ package hacs;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.*;
 import java.util.*;
 
 /**
@@ -15,7 +14,11 @@ import java.util.*;
 
 public class StudentAssignmentMenu extends AssignmentMenu {
 
-////  class AssignmentMenu
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	//// class AssignmentMenu
 	private boolean boolSubmit = false;
 	private Solution theSolution;
 	private Assignment theAssignment;
@@ -96,9 +99,9 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 	 * check if the student has already had a solution or not. if not , create a new
 	 * solution for the student. after showing the solution attatch the soluiton;
 	 */
-	public void ShowMenu(Assignment assignment, Person thePerson) {
+	public void showMenu(Assignment assignment, Person thePerson) {
 		theAssignment = assignment;
-		SolutionIterator theIter = theAssignment.GetSolutionIterator();
+		SolutionIterator theIter = theAssignment.getSolutionIterator();
 		theSolution = (Solution) theIter.next(thePerson.UserName);
 		if (theSolution == null) {
 			tbSolution.setText("");
@@ -113,12 +116,14 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 		lDueDate.setText(theAssignment.DueDate.toString());
 		lSuggestedSolution.setText(theAssignment.SuggestSolution.SolutionFileName);
 
-		show();
+		// Showing menu for assignment to person and refactoring it to setVisible(true)
+
+		setVisible(true);
 
 		if (boolSubmit == true) {
 			if (theSolution == null) {
 				theSolution = new Solution();
-				theAssignment.AddSolution(theSolution);
+				theAssignment.addSolution(theSolution);
 			}
 			theSolution.theAuthor = thePerson.UserName;
 			theSolution.SolutionFileName = tbSolution.getText();
@@ -128,12 +133,17 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 
 	void bSubmit_actionPerformed(ActionEvent e) {
 		boolSubmit = true;
-		hide();
+
+		// After clicking submit button setting its visibility to false
+		setVisible(false);
 	}
 
 	void bCancel_actionPerformed(ActionEvent e) {
 		boolSubmit = false;
-		hide();
+
+		// After clicking cancel button setting its visibility to false
+		setVisible(false);
+
 	}
 
 }
