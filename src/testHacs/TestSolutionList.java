@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import hacs.Solution;
 import hacs.SolutionList;
 
-class TestSolutionList {
+public class TestSolutionList {
 
 	  @Test
 	    void testInitializeFromFile() {

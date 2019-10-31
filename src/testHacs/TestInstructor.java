@@ -10,7 +10,7 @@ import hacs.HighLevelCourseMenu;
 import hacs.Instructor;
 import hacs.LowLevelCourseMenu;
 
-class TestInstructor {
+public class TestInstructor {
 
 	/*
 	 * Testing high level course menu for instructor while creating menu

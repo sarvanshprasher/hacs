@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import hacs.Assignment;
 import hacs.Course;
 
-class TestCourse {
+public class TestCourse {
 	
 	/*
 	 * This method is for testing assignment addition

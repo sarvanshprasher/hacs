@@ -10,7 +10,7 @@ import hacs.ClassCourseList;
 import hacs.Course;
 import hacs.CourseIterator;
 
-class TestCourseIterator {
+public class TestCourseIterator {
 
 	ClassCourseList courses = new ClassCourseList();
 

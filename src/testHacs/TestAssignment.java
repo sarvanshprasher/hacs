@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-
+import org.junit.platform.commons.*;
 import org.junit.jupiter.api.Test;
 
 import hacs.Assignment;
@@ -21,13 +21,14 @@ class TestAssignment {
 	 * Testing whether the due date for given assignment is set or not
 	 */
 	@Test
-	void testSetDueDate() {
+	 void testSetDueDate() {
 
 		Date nowDate = new Date();
 		assignment.setDueDate(nowDate);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/M/yy");
 		String date = sdf.format(new Date());
 		assertEquals(true, assignment.getDueDateString().equals(date));
+		
 
 	}
 
@@ -36,7 +37,7 @@ class TestAssignment {
 	 * Testing whether the assignment specification is correct or not
 	 */
 	@Test
-	void testSetAssSpec() {
+	 void testSetAssSpec() {
 
 		Assignment assignment = new Assignment();
 		String name = "Assignment";
@@ -50,7 +51,7 @@ class TestAssignment {
 	 * Testing whether the assignment specification is not null
 	 */
 	@Test
-	void testSetAssSpecNotNull() {
+	 void testSetAssSpecNotNull() {
 
 		assignment.setAssSpec("Assignment");
 		assertNotNull(assignment.getAssSpec());
@@ -62,7 +63,7 @@ class TestAssignment {
 	 * Testing whether the assignment is over due or not
 	 */
 	@Test
-	void testIsOverDue() throws InterruptedException {
+	 void testIsOverDue() throws InterruptedException {
 
 		Date now = new Date();
 		Assignment assignment = new Assignment();
@@ -78,7 +79,7 @@ class TestAssignment {
 	 * Testing whether the solution is getting added for the assignment or not
 	 */
 	@Test
-	void testAddSolution() {
+	 void testAddSolution() {
 
 		Solution solution = new Solution();
 		solution = assignment.addSolution();
@@ -91,7 +92,7 @@ class TestAssignment {
 	 * Testing whether the solution is getting added to the list of solution or not
 	 */
 	@Test
-	void testAddSolutionList() {
+	 void testAddSolutionList() {
 
 		Assignment assignment = new Assignment();
 		Solution solution = new Solution();
@@ -107,7 +108,7 @@ class TestAssignment {
 	 * solution for any student.
 	 */
 	@Test
-	void testGetSolution() {
+	 void testGetSolution() {
 
 		Solution solution = new Solution();
 		Assignment assignment = new Assignment();
@@ -121,7 +122,7 @@ class TestAssignment {
 	 * Testing the suggested solution
 	 */
 	@Test
-	void testGetSugSolution() {
+	 void testGetSugSolution() {
 
 		Solution solution = new Solution();
 		solution = assignment.getSugSolution();
@@ -134,7 +135,7 @@ class TestAssignment {
 	 * Testing whether the assignment name is not null.
 	 */
 	@Test
-	void testToString() {
+	 void testToString() {
 
 		Assignment assignment = new Assignment();
 		String name = null;

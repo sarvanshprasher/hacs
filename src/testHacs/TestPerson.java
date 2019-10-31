@@ -9,7 +9,7 @@ import hacs.Course;
 import hacs.Person;
 import hacs.Student;
 
-class TestPerson {
+public class TestPerson {
 
 	@Test
     void testGetCourseList() {

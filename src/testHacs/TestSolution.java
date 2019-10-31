@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import hacs.Solution;
 
-class TestSolution {
+public class TestSolution {
 
 	@Test
 	void testAuthorName() {

@@ -8,7 +8,7 @@ import hacs.Course;
 import hacs.CourseMenu;
 import hacs.Student;
 
-class TestStudent {
+public class TestStudent {
 
 	@Test
 	void TestCreateCourseMenu() {

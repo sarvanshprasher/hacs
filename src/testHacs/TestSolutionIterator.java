@@ -10,19 +10,19 @@ import hacs.Solution;
 import hacs.SolutionIterator;
 import hacs.SolutionList;
 
-class TestSolutionIterator {
+public class TestSolutionIterator {
 
 	SolutionList solution = new SolutionList();
 	
 	@BeforeEach
-	void testGetCourses() {
+	void testGetSolutions() {
 		
 		solution.initializeFromFile("SolutionInfo.txt");
 		
 	}
 
 	@AfterEach
-	void testGetCoursesList() {
+	void testGetSolutionList() {
 		
 		solution = new SolutionList();
 		
