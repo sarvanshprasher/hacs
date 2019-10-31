@@ -15,19 +15,19 @@ import java.util.*;
  */
 
 public class Course {
-  String CourseName;
+  String courseName;
   public ArrayList<Assignment> assignmentList=new ArrayList<Assignment>();
-  int NumOfAss;
-  int CourseLevel;
+  int numOfAss;
+  int courseLevel;
   
 
   public Course(String strCourse, int theLevel) {
-    this.CourseName = strCourse;
+    this.courseName = strCourse;
 
    //0 HighLeve presentation    1  LowLevel Experiment
-    this.CourseLevel = theLevel;
+    this.courseLevel = theLevel;
    // this.AssList = NULL;
-    this.NumOfAss = 0;
+    this.numOfAss = 0;
   }
   
   public void addAssignment(Assignment newAss){
@@ -38,7 +38,7 @@ public class Course {
   
   public String toString(){
 	  
-    return CourseName;
+    return courseName;
     
   }
   

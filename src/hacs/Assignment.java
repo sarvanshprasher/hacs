@@ -17,25 +17,25 @@ import java.text.DateFormat;
 
 public class Assignment {
 
-	protected String AssName;
+	protected String assName;
 	protected String strAssignmentFilename;
-	protected Date DueDate = new Date();
-	protected String AssSpec;
+	protected Date dueDate = new Date();
+	protected String assSpec;
 	protected SolutionList theSolutionList = new SolutionList();
-	protected Solution SuggestSolution = new Solution();
+	protected Solution suggestSolution = new Solution();
 
 	public Assignment() {
 	}
 
 	public void setDueDate(Date theDueDate) {
 		
-		this.DueDate = theDueDate;
+		this.dueDate = theDueDate;
 	
 	}
 
 	public void setAssSpec(String theSpec) {
 		
-		this.AssSpec = theSpec;
+		this.assSpec = theSpec;
 		
 	}
 
@@ -43,7 +43,7 @@ public class Assignment {
 		
 		Date today;
 		today = new Date();
-		if (today.after(this.DueDate)) {
+		if (today.after(this.dueDate)) {
 			return true;
 		} else {
 			return false;
@@ -92,7 +92,7 @@ public class Assignment {
 
 	public Solution getSugSolution() {
 		
-		return SuggestSolution;
+		return suggestSolution;
 		
 	}
 
@@ -105,20 +105,20 @@ public class Assignment {
 
 	public String toString() {
 		
-		return AssName;
+		return assName;
 		
 	}
 
 	public String getDueDateString() {
 		
 		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
-		return dateFormat.format(DueDate);
+		return dateFormat.format(dueDate);
 		
 	}
 
 	public String getAssSpec() {
 		
-		return AssSpec;
+		return assSpec;
 
 	}
 

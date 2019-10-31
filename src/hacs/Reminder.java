@@ -16,7 +16,7 @@ public class Reminder extends JDialog {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	ClassCourseList CourseList;
+	ClassCourseList courseList;
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel2 = new JLabel();
 	java.awt.List listUpcoming = new java.awt.List();
@@ -45,7 +45,7 @@ public class Reminder extends JDialog {
 		buttonOK.setBounds(new Rectangle(149, 308, 67, 37));
 		buttonOK.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buttonOK_actionPerformed(e);
+				buttonOkActionPerformed(e);
 			}
 		});
 		this.getContentPane().add(jLabel1, null);
@@ -63,7 +63,7 @@ public class Reminder extends JDialog {
 		setVisible(true);
 	}
 
-	void buttonOK_actionPerformed(ActionEvent e) {
+	void buttonOkActionPerformed(ActionEvent e) {
 
 		// Set visible(false) after ok action is clicked by person.
 		setVisible(false);

@@ -19,8 +19,7 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 	private static final long serialVersionUID = 1L;
 	private SolutionList theSolution;
 	private Assignment theAssignment;
-	JComboBox<SolutionList> CombSolutionList = new JComboBox<SolutionList>();
-	////////////////////////
+	JComboBox<SolutionList> combSolutionList = new JComboBox<SolutionList>();
 
 	JTextField tbAssignmentName = new JTextField();
 	JTextField tbDueDate = new JTextField();
@@ -59,24 +58,24 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 		buttonGrade.setBounds(new Rectangle(458, 199, 79, 29));
 		buttonGrade.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buttonGrade_actionPerformed(e);
+				buttonGradeActionPerformed(e);
 			}
 		});
 		buttonReport.setText("Report");
 		buttonReport.setBounds(new Rectangle(365, 249, 79, 29));
 		buttonReport.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buttonReport_actionPerformed(e);
+				buttonReportActionPerformed(e);
 			}
 		});
 		buttonClose.setText("Close");
 		buttonClose.setBounds(new Rectangle(86, 253, 79, 29));
 		buttonClose.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				buttonClose_actionPerformed(e);
+				buttonCloseActionPerformed(e);
 			}
 		});
-		CombSolutionList.setBounds(new Rectangle(32, 204, 413, 22));
+		combSolutionList.setBounds(new Rectangle(32, 204, 413, 22));
 		this.getContentPane().add(jLabel1, null);
 		this.getContentPane().add(tbAssignmentName, null);
 		this.getContentPane().add(jLabel2, null);
@@ -84,41 +83,41 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 		this.getContentPane().add(jLabel3, null);
 		this.getContentPane().add(tbSuggestedSolution, null);
 		this.getContentPane().add(buttonClose, null);
-		this.getContentPane().add(CombSolutionList, null);
+		this.getContentPane().add(combSolutionList, null);
 		this.getContentPane().add(buttonGrade, null);
 		this.getContentPane().add(buttonReport, null);
 	}
 
 	public void showMenu(Assignment assignment, Person person) {
 		theAssignment = assignment;
-		tbAssignmentName.setText(theAssignment.AssName);
+		tbAssignmentName.setText(theAssignment.assName);
 
 		DateFormat theDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
-		tbDueDate.setText(theDateFormat.format(theAssignment.DueDate));
-		tbSuggestedSolution.setText(theAssignment.SuggestSolution.solutionFileName);
+		tbDueDate.setText(theDateFormat.format(theAssignment.dueDate));
+		tbSuggestedSolution.setText(theAssignment.suggestSolution.solutionFileName);
 		refreshSolutionList();
-		
+
 		// Added setVisible(true) to make showMenu visible.
 		setVisible(true);
 	}
 
-	void buttonClose_actionPerformed(ActionEvent e) {
-		theAssignment.AssName = tbAssignmentName.getText();
+	void buttonCloseActionPerformed(ActionEvent e) {
+		theAssignment.assName = tbAssignmentName.getText();
 		DateFormat tempDateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
 		try {
-			theAssignment.DueDate = tempDateFormat.parse(tbDueDate.getText());
+			theAssignment.dueDate = tempDateFormat.parse(tbDueDate.getText());
 		} catch (Exception ee) {
 		}
 		;
-		theAssignment.SuggestSolution.solutionFileName = tbSuggestedSolution.getText();
-		
+		theAssignment.suggestSolution.solutionFileName = tbSuggestedSolution.getText();
+
 		// Added setVisible(true) to make showMenu visible.
 		setVisible(false);
-		
+
 	}
 
-	void buttonGrade_actionPerformed(ActionEvent e) {
-		Solution theSolution = (Solution) CombSolutionList.getSelectedItem();
+	void buttonGradeActionPerformed(ActionEvent e) {
+		Solution theSolution = (Solution) combSolutionList.getSelectedItem();
 		if (theSolution == null)
 			return;
 		SolutionGradingDlg dlg = new SolutionGradingDlg();
@@ -126,7 +125,7 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 		refreshSolutionList();
 	}
 
-	void buttonReport_actionPerformed(ActionEvent e) {
+	void buttonReportActionPerformed(ActionEvent e) {
 		SolutionIterator iter = new SolutionIterator(theAssignment.theSolutionList);
 		while (iter.hasNext()) {
 			Solution asolution = (Solution) iter.next();
@@ -136,11 +135,11 @@ public class InstructorAssignmentMenu extends AssignmentMenu {
 	}
 
 	private void refreshSolutionList() {
-		CombSolutionList.removeAllItems();
+		combSolutionList.removeAllItems();
 		SolutionIterator SolIter = new SolutionIterator(theAssignment.theSolutionList);
 		while (SolIter.hasNext()) {
 			theSolution = (SolutionList) SolIter.next();
-			CombSolutionList.addItem(theSolution);
+			combSolutionList.addItem(theSolution);
 		}
 	}
 }

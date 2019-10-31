@@ -8,6 +8,7 @@ package hacs;
  */
 
 public class Instructor extends Person {
+	
 	public Instructor() {
 		type = 1;// type=1 :instructor
 	}
@@ -18,7 +19,7 @@ public class Instructor extends Person {
 			theCourseMenu = new HighLevelCourseMenu();
 		} else/// 1: LowLevel
 		{
-			theCourseMenu = new HighLevelCourseMenu();
+			theCourseMenu = new LowLevelCourseMenu();
 		}
 		return theCourseMenu;
 	}
