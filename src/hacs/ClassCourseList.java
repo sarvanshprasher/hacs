@@ -9,16 +9,26 @@ import java.io.*;
  * @author Zhang ji Zhu Wei
  * @version 1.0
  * @author mjfindler
- * @version 2.0 update to Java 8
+ * @version 2.0
+ * @author Sarvansh Prasher
+ * @version 3.0
  */
 
 @SuppressWarnings("serial")
 public class ClassCourseList extends ArrayList<Course> {
 
+	
+	/*
+	* This function is constructor.
+	* 
+	*/
 	public ClassCourseList() {
 	}
 
-	//// initialize the list by reading from the file.
+	/*
+	* This function gets the classes from file in string.
+	* 
+	*/
 	@SuppressWarnings("resource")
 	public void initializeFromFile(String theFileName) {
 		try {
@@ -38,6 +48,10 @@ public class ClassCourseList extends ArrayList<Course> {
 		}
 	}
 
+	/*
+	* This function finds the course by course name
+	* @return Course
+	*/
 	public Course findCourseByCourseName(String CourseName) {
 		int nCourseCount = size();
 		for (int i = 0; i < nCourseCount; i++) {

@@ -9,6 +9,8 @@ import java.util.*;
  * 
  * @author Ji Zhang, Wei Zhu
  * @version 1.0
+ * @author Sarvansh Prasher
+ * @version 2.0
  */
 
 abstract public class Person {
@@ -43,7 +45,7 @@ abstract public class Person {
 
 	public void show() {
 
-		// FOr person show the course menu and set it to setVisible(true)
+		// For person show the course menu and set it to setVisible(true)
 		theCourseMenu.setVisible(true);
 	}
 

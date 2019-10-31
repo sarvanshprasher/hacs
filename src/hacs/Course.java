@@ -11,7 +11,8 @@ import java.util.*;
  * @version 1.0
  * @author mjfindler
  * @version 2.0 
- * Update to Java 8
+ * @author Sarvansh Prasher
+ * @version 3.0
  */
 
 public class Course {
@@ -20,7 +21,10 @@ public class Course {
   int numOfAss;
   int courseLevel;
   
-
+  /*
+   * This function finds the course by course name
+   * @return Course
+   */
   public Course(String strCourse, int theLevel) {
     this.courseName = strCourse;
 
@@ -53,5 +57,6 @@ public class Course {
 	return assignmentList.size();	 
 	
   }
+  
 
 }

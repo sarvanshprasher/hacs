@@ -1,18 +1,21 @@
 package testHacs;
 
+/*
+* @author Sarvansh Prasher
+* @version 1.0
+*/
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import org.junit.platform.commons.*;
 import org.junit.jupiter.api.Test;
 
 import hacs.Assignment;
 import hacs.Solution;
 import hacs.SolutionList;
 
-class TestAssignment {
+public class TestAssignment {
 
 	final Assignment assignment = new Assignment();
 

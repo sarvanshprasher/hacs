@@ -10,6 +10,8 @@ import java.util.Iterator;
  * 
  * @author Zhang ji Zhu Wei
  * @version 1.0
+ * @author Sarvansh Prasher
+ * @version 2.0 
  */
 
 abstract public class CourseMenu extends JDialog {

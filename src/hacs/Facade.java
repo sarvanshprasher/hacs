@@ -9,8 +9,9 @@ import java.io.*;
  * @version 1.0
  * @author mjfindler
  * @version 2.0
+ * @author Sarvansh Prasher
+ * @version 3.0
  * 
- *          Update to Jave 8
  */
 
 public class Facade {
@@ -109,8 +110,8 @@ public class Facade {
 		theReminder.showReminder(thePerson.getCourseList());
 	}
 
-	void CreateUser(UserInfoItem userinfoitem) {
-		if (userinfoitem.UserType == UserInfoItem.USER_TYPE.Student) /// student
+	public void createUser(UserInfoItem userinfoitem) {
+		if (userinfoitem.getUserType() == UserType.Student) /// student
 		{
 			thePerson = new Student();
 		} else /// instructor
@@ -123,7 +124,7 @@ public class Facade {
 	/*
 	 * create a course list and intitialize it with the file CourseInfo.txt
 	 */
-	void createCourseList() {
+	public void createCourseList() {
 		theCourseList = new ClassCourseList();
 		theCourseList.initializeFromFile("CourseInfo.txt");
 	}
@@ -133,7 +134,7 @@ public class Facade {
 	 * UserCourse.txt file match the coursename with theCouresList attach the
 	 * Matched course object to the new create user Facade.thePerson.CourseList
 	 */
-	void attachCourseToUser() {
+	public void attachCourseToUser() {
 		BufferedReader file;
 		try {
 			file = new BufferedReader(new FileReader("UserCourse.txt"));
@@ -205,6 +206,15 @@ public class Facade {
 	private Course findCourseByCourseName(String strCourseName) {
 		CourseIterator Iterator = new CourseIterator(theCourseList);
 		return (Course) Iterator.next(strCourseName);
+	}
+
+	public ClassCourseList getCourses() {
+		return theCourseList;
+	}
+	
+	public Person getPerson() {
+		
+		return thePerson;
 	}
 
 }

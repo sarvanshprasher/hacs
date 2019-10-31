@@ -1,12 +1,13 @@
 package testHacs;
 
-import org.junit.jupiter.api.extension.ExtendWith;
+/*
+* @author Sarvansh Prasher
+* @version 1.0
+*/
+
 import org.junit.platform.runner.JUnitPlatform;
 import org.junit.platform.suite.api.SelectClasses;
-import org.junit.platform.suite.api.SelectPackages;
 import org.junit.runner.RunWith;
-import org.junit.runners.Suite;
-import org.junit.runners.Suite.SuiteClasses;
 import testHacs.TestAssignment;
 import testHacs.TestClassCourseList;
 import testHacs.TestCourse;

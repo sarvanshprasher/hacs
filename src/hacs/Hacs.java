@@ -7,8 +7,8 @@ package hacs;
  * @version 1.0
  * @author mjfindler
  * @version 2.0
- * 
- *          Update to Java 8
+ * @author Sarvansh Prasher
+ * @version 3.0
  */
 
 public class Hacs {
@@ -30,7 +30,7 @@ public class Hacs {
 				break;
 			// userinfoitem.strUserName = "Inst1";
 			// userinfoitem.UserType = 1;
-			theFacade.CreateUser(userinfoitem);
+			theFacade.createUser(userinfoitem);
 			theFacade.attachCourseToUser();
 			if (userinfoitem.UserType == UserInfoItem.USER_TYPE.Student) // if is a student remind him of the due date
 				theFacade.remind();

@@ -3,6 +3,7 @@ package hacs;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -12,15 +13,14 @@ import java.util.List;
  * @version 1.0
  * @author mjfindler
  * @version 2.0
+ * @author Sarvansh Prasher
+ * @version 3.0
  * 
- *          Update to Java 8
+ *     
  */
 
 public class SolutionList extends ArrayList<Solution> {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	List<Solution> solutions = new ArrayList<Solution>();
@@ -46,4 +46,11 @@ public class SolutionList extends ArrayList<Solution> {
 
 		}
 	}
+	
+
+	@SuppressWarnings("unchecked")
+	@Override
+    public Iterator<Solution> iterator() {
+        return new SolutionIterator(this);
+    }
 }
