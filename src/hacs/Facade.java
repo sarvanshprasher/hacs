@@ -106,7 +106,7 @@ public class Facade {
 	//////////
 	void Remind() {
 		Reminder theReminder = new Reminder();
-		theReminder.showReminder(thePerson.GetCourseList());
+		theReminder.showReminder(thePerson.getCourseList());
 	}
 
 	void CreateUser(UserInfoItem userinfoitem) {
@@ -147,7 +147,7 @@ public class Facade {
 					theSelecteCourse = FindCourseByCourseName(strCourseName);
 					if (theSelecteCourse != null) /// Find the Course in the CourseList--->attach
 					{
-						thePerson.AddCourse(theSelecteCourse);
+						thePerson.addCourse(theSelecteCourse);
 					}
 				}
 			}
@@ -193,8 +193,8 @@ public class Facade {
 	 */
 
 	public boolean CourseOperation() {
-		thePerson.CreateCourseMenu(theSelecteCourse, nCourseLevel);
-		return thePerson.ShowMenu();//// 0: logout 1 select an other course
+		thePerson.createCourseMenu(theSelecteCourse, nCourseLevel);
+		return thePerson.showMenu();//// 0: logout 1 select an other course
 	}
 
 	/*

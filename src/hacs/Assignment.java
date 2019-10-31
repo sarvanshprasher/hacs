@@ -85,8 +85,8 @@ public class Assignment {
 	 */
 	public Solution getSolution(String studentname) {
 		
-		SolutionIterator Iterator = (SolutionIterator) theSolutionList.iterator();
-		return (Solution) Iterator.next(studentname);
+		Iterator<Solution> Iterator = theSolutionList.iterator();
+		return (Solution) Iterator.next();
 		
 	}
 
