@@ -14,35 +14,36 @@ import java.io.*;
  * @version 3.0
  */
 
-@SuppressWarnings("serial")
 public class ClassCourseList extends ArrayList<Course> {
 
+	private static final long serialVersionUID = 1L;
+
 	/*
-	 * This function is constructor.
+	 * This function works as a constructor.
 	 * 
 	 */
 	public ClassCourseList() {
 	}
 
 	/*
-	 * This function gets the classes from file in string.
+	 * This function gets the classes from file.
 	 * 
 	 */
-	@SuppressWarnings("resource")
 	public void initializeFromFile(String theFileName) {
+
 		try {
 			BufferedReader file;
-			String strCourseName = null;
+			String courseName = null;
 			file = new BufferedReader(new FileReader("CourseInfo.txt"));
-			while ((strCourseName = file.readLine()) != null) {
-				Course theCourse;
-				theCourse = new Course(strCourseName, 0);
-//      theCourse.CourseName= strCourseName;
-				add(theCourse);
+			while ((courseName = file.readLine()) != null) {
+				Course course;
+				course = new Course(courseName, 0);
+				// theCourse.CourseName= strCourseName;
+				add(course);
 			}
+			file.close();
+
 		} catch (Exception ee) {
-			;
-		} finally {
 
 		}
 	}
@@ -53,14 +54,16 @@ public class ClassCourseList extends ArrayList<Course> {
 	 * @return Course
 	 */
 	public Course findCourseByCourseName(String CourseName) {
-		int nCourseCount = size();
-		for (int i = 0; i < nCourseCount; i++) {
-			Course theCourse;
-			theCourse = (Course) get(i);
-			if (theCourse.courseName.compareTo(CourseName) == 0)
-				return theCourse;
+
+		int courseCount = size();
+		Course course = null;
+		for (int i = 0; i < courseCount; i++) {
+			course = (Course) get(i);
+			if (course.courseName.compareTo(CourseName) == 0)
+				return course;
 		}
-		return null;
+		return course;
+
 	}
 
 }

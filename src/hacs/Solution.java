@@ -13,14 +13,15 @@ import java.util.*;
  * @version 2.0
  * @author Sarvansh Prasher
  * @version 3.0
- *       
+ * 
  */
 
 public class Solution {
-	String theAuthor = "";
+
+	String author = "";
 	String solutionFileName = "";
-	Date theSubmitData = new Date();
-	int theGrade;
+	Date submittedDate = new Date();
+	int grade;
 	boolean reported = false;
 
 	public Solution() {
@@ -28,52 +29,99 @@ public class Solution {
 
 	@Override
 	public String toString() {
+
 		String string;
-		string = theAuthor + "  " + solutionFileName + " Grade=" + getGradeInt() + "  ";
+		string = author + "  " + solutionFileName + " Grade=" + getGradeInt() + "  ";
 		if (isReported())
 			string += "reported";
 		else
 			string += "not reported";
 
 		return (string);
+
 	}
 
+	/*
+	 * This function gets the grade string for solution
+	 */
 	String getGradeString() {
+
 		if (isReported())
-			return "" + theGrade;
+			return "" + grade;
 		else
 			return "-1";
+
 	}
 
+	/*
+	 * This function sets the grade for solution
+	 */
 	public void setGradeInt(int gradeInt) {
-		theGrade = gradeInt;
+
+		grade = gradeInt;
+
 	}
 
+	/*
+	 * This function gets the grade for solution.
+	 */
 	public int getGradeInt() {
-		return theGrade;
+
+		return grade;
+
 	}
 
+	/*
+	 * This function set the isReported value for a solution.
+	 */
 	public void setReported(boolean reported) {
+
 		this.reported = reported;
+
 	}
 
+	/*
+	 * This function checks if solution is reported or not.
+	 */
 	public boolean isReported() {
+
 		return reported;
+
 	}
 
+	/*
+	 * This function sets the author name.
+	 */
 	public void setAuthorName(String authorName) {
-		theAuthor = authorName;
+
+		author = authorName;
+
 	}
 
+	/*
+	 * This function gets the author name.
+	 */
 	public String getAuthorName() {
-		return theAuthor;
+
+		return author;
+
 	}
 
+	/*
+	 * This function sets the solution file name.
+	 */
 	public void setSolutionFileName(String solutionFileName) {
+
 		this.solutionFileName = solutionFileName;
+
 	}
 
+	/*
+	 * This function gets the solution file name.
+	 */
 	public String getSolutionFileName() {
+
 		return this.solutionFileName;
+
 	}
 }

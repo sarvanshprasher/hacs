@@ -22,53 +22,71 @@ public class SolutionIterator implements Iterator {
 	}
 
 	public SolutionIterator(SolutionList thesolutionlist) {
+
 		solutionlist = thesolutionlist;
 		MoveToHead();
+
 	}
 
+	/*
+	 * This function points to head of the solution
+	 */
 	public void MoveToHead() {
-		/// CurrentSolutionNumber: point to the location before the first element
+
 		currentSolutionNumber = -1;
+
 	}
 
+	/*
+	 * This function check if there is next Solution.
+	 */
 	public boolean hasNext() {
-		/** @todo: Implement this java.util.Iterator method */
+
 		if (currentSolutionNumber >= solutionlist.size() - 1)
 			return false;
 		else
 			return true;
-		//    throw new java.lang.UnsupportedOperationException("Method hasNext() not yet implemented.");
+
 	}
 
+	/*
+	 * This function get the Object next Solution.
+	 */
 	public Object next() {
-		/** @todo: Implement this java.util.Iterator method */
+
 		if (hasNext() == true) {
 			currentSolutionNumber++;
 			return solutionlist.get(currentSolutionNumber);
 		} else {
 			return null;
 		}
-		// throw new java.lang.UnsupportedOperationException("Method next() not yet
-		// implemented.");
+
 	}
 
-	/// get the next Solution that fits the Username;
-	public Object next(String UserName) {
-		Solution theSolution;
-		theSolution = (Solution) next();
-		while (theSolution != null) {
-			if (UserName.compareTo(theSolution.theAuthor) == 0) {
-				return theSolution;
+	/*
+	 * This function get the next Solution that fits the Username;
+	 */
+	public Object next(String userName) {
+
+		Solution solution;
+		solution = (Solution) next();
+		while (solution != null) {
+			if (userName.compareTo(solution.author) == 0) {
+				return solution;
 			}
-			theSolution = (Solution) next();
+			solution = (Solution) next();
 		}
 		return null;
+
 	}
 
+	/*
+	 * This function removes the current solution from solution list
+	 */
 	public void remove() {
-		/** @todo: Implement this java.util.Iterator method */
+
 		solutionlist.remove(currentSolutionNumber);
-		//    throw new java.lang.UnsupportedOperationException("Method remove() not yet implemented.");
+
 	}
 
 }

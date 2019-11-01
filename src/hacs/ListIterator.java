@@ -8,39 +8,63 @@ import java.util.*;
  * @author Zhang ji Zhu Wei
  * @version 1.0
  * @author mjfindler
- * @version 2.0 
+ * @version 2.0
  * @author Sarvansh Prasher
  * @version 3.0
  */
 
 public class ListIterator implements Iterator<Object> {
-	ArrayList<Object> theList;
+
+	ArrayList<Object> list;
 	int currentNumber = -1;
 
-	public ListIterator() {
+	public ListIterator() {}
+
+	/*
+	 * 
+	 * This function creates a constructor where array list will be passed
+	 */
+	public ListIterator(ArrayList<Object> arrayList) {
+
+		list = arrayList;
+
 	}
 
-	public ListIterator(ArrayList<Object> list) {
-		theList = list;
-	}
-
+	/*
+	 * 
+	 * This function check if there is next element in the list
+	 */
 	public boolean hasNext() {
-		if (currentNumber >= theList.size() - 1)
+
+		if (currentNumber >= list.size() - 1)
 			return false;
 		else
 			return true;
+
 	}
 
+	/*
+	 * 
+	 * This function gets the object of next element from the list
+	 */
 	public Object next() {
+
 		if (hasNext() == true) {
 			currentNumber++;
-			return theList.get(currentNumber);
+			return list.get(currentNumber);
 		} else {
 			return null;
 		}
+
 	}
 
+	/*
+	 * 
+	 * This function removes the element from the list
+	 */
 	public void remove() {
-		theList.remove(currentNumber);
+
+		list.remove(currentNumber);
+
 	}
 }

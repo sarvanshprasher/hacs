@@ -15,28 +15,36 @@ package hacs;
 public class Student extends Person {
 
 	public Student() {
-		type = 0; // type=0: student
+		
+		type = 0;
+		
 	}
 
+	/*
+	 *  For showing the course menu for student
+	 */
 	public CourseMenu createCourseMenu(Course theCourse, int theLevel) {
 
-		if (theLevel == 0) // 0: Highlevel defined in CourseSelectDlg.
-		{
-			theCourseMenu = new HighLevelCourseMenu();
-		} else // 1: LowLevel
-		{
-			theCourseMenu = new LowLevelCourseMenu();
+		if (theLevel == 0) {
+			courseMenu = new HighLevelCourseMenu();
+		} else {
+			courseMenu = new LowLevelCourseMenu();
 		}
-		return theCourseMenu;
+		return courseMenu;
 	}
 
+	/*
+	 *  For showing the menu for student
+	 */
 	@Override
 	public boolean showMenu() {
+		
 		super.showMenu();
 		showViewButtons();
 		showComboxes();
 		showRadios();
 		show();
 		return ifLogout();
+		
 	}
 }

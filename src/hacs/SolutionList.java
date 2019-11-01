@@ -29,9 +29,11 @@ public class SolutionList extends ArrayList<Solution> {
 
 	}
 
-	//// initialize the list by reading from the file.
-	@SuppressWarnings("resource")
+	/*
+	 *  initialize the list by reading from the file.
+	 */
 	public void initializeFromFile(String theFileName) {
+		
 		try {
 			BufferedReader file;
 			file = new BufferedReader(new FileReader("SolutionInfo.txt"));
@@ -40,17 +42,20 @@ public class SolutionList extends ArrayList<Solution> {
 				theSolution = new Solution();
 				add(theSolution);
 			}
+			file.close();
 		} catch (Exception ee) {
 			;
 		} finally {
 
 		}
+		
 	}
 	
-
 	@SuppressWarnings("unchecked")
 	@Override
     public Iterator<Solution> iterator() {
+		
         return new SolutionIterator(this);
+        
     }
 }

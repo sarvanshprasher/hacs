@@ -40,14 +40,17 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 	JLabel jLabel7 = new JLabel();
 
 	public StudentAssignmentMenu() {
+
 		try {
 			jbInit();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	private void jbInit() throws Exception {
+
 		jLabel1.setText("Assignment : ");
 		jLabel1.setBounds(new Rectangle(20, 36, 91, 18));
 		this.getContentPane().setLayout(null);
@@ -95,6 +98,7 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 		this.getContentPane().add(lGrade, null);
 		this.getContentPane().add(bSubmit, null);
 		this.getContentPane().add(bCancel, null);
+
 	}
 
 	/*
@@ -113,13 +117,11 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 			lGrade.setText(theSolution.getGradeString());
 
 		}
-
-		lAssignmentName.setText(theAssignment.assName);
+		lAssignmentName.setText(theAssignment.assignmentName);
 		lDueDate.setText(theAssignment.dueDate.toString());
 		lSuggestedSolution.setText(theAssignment.suggestSolution.solutionFileName);
 
 		// Showing menu for assignment to person and refactoring it to setVisible(true)
-
 		setVisible(true);
 
 		if (boolSubmit == true) {
@@ -127,23 +129,29 @@ public class StudentAssignmentMenu extends AssignmentMenu {
 				theSolution = new Solution();
 				theAssignment.addSolution(theSolution);
 			}
-			theSolution.theAuthor = thePerson.userName;
+			theSolution.author = thePerson.userName;
 			theSolution.solutionFileName = tbSolution.getText();
-			theSolution.theSubmitData = new Date();
+			theSolution.submittedDate = new Date();
 		}
+
 	}
 
+	/*
+	 * After clicking submit button setting its visibility to false
+	 */
 	void bSubmitActionPerformed(ActionEvent e) {
-		boolSubmit = true;
 
-		// After clicking submit button setting its visibility to false
+		boolSubmit = true;
 		setVisible(false);
+
 	}
 
+	/*
+	 * After clicking cancel button setting its visibility to false
+	 */
 	void bCancelActionPerformed(ActionEvent e) {
-		boolSubmit = false;
 
-		// After clicking cancel button setting its visibility to false
+		boolSubmit = false;
 		setVisible(false);
 
 	}

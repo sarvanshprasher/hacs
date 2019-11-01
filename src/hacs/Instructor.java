@@ -10,23 +10,30 @@ package hacs;
  */
 
 public class Instructor extends Person {
-	
+
 	public Instructor() {
-		type = 1;// type=1 :instructor
+		type = 1;
 	}
 
-	public CourseMenu createCourseMenu(Course theCourse, int theLevel) {
-		if (theLevel == 0)/// 0: Highlevel defined in CourseSeletDlg.
-		{
-			theCourseMenu = new HighLevelCourseMenu();
-		} else/// 1: LowLevel
-		{
-			theCourseMenu = new LowLevelCourseMenu();
+	/*
+	 * This function creates the CourseMenu for Instructor
+	 */
+	public CourseMenu createCourseMenu(Course course, int level) {
+		
+		if (level == 0) {
+			courseMenu = new HighLevelCourseMenu();
+		} else {
+			courseMenu = new LowLevelCourseMenu();
 		}
-		return theCourseMenu;
+		return courseMenu;
+		
 	}
 
+	/*
+	 * This function shows the CourseMenu for Instructor
+	 */
 	public boolean showMenu() {
+		
 		super.showMenu();
 		showAddButton();
 		showViewButtons();
@@ -34,5 +41,6 @@ public class Instructor extends Person {
 		showRadios();
 		show();
 		return ifLogout();
+		
 	}
 }

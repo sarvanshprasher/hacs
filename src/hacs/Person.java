@@ -14,64 +14,113 @@ import java.util.*;
  */
 
 abstract public class Person {
-	int type = 0; // type=0 : student, type=1 instructor
+
+	int type = 0;
 	String userName;
 	ClassCourseList courseList;
-	CourseMenu theCourseMenu;
+	CourseMenu courseMenu;
 	Course currentCourse;
 	Assignment currentAssignment;
 
 	public Person() {
+
 		courseList = new ClassCourseList();
+
 	}
 
+	/*
+	 * This method is for showing the menu in the course for person.
+	 */
 	abstract public CourseMenu createCourseMenu(Course theCourse, int theLevel);
 
+	/*
+	 * This method is for showing the add buttons in the course.
+	 */
 	public void showAddButton() {
-		theCourseMenu.showAddButtons();
+
+		courseMenu.showAddButtons();
+
 	}
 
+	/*
+	 * This method is for showing the view buttons in the course.
+	 */
 	public void showViewButtons() {
-		theCourseMenu.showViewButtons();
+
+		courseMenu.showViewButtons();
+
 	}
 
+	/*
+	 * This method is for showing the comboxes buttons in the course.
+	 */
 	public void showComboxes() {
-		theCourseMenu.showComboxes();
+
+		courseMenu.showComboxes();
+
 	}
 
+	/*
+	 * This method is for showing the radio buttons in the course.
+	 */
 	public void showRadios() {
-		theCourseMenu.showRadios();
+
+		courseMenu.showRadios();
+
 	}
 
+	/*
+	 * // For person show the course menu and set it to setVisible(true)
+	 */
 	public void show() {
 
 		// For person show the course menu and set it to setVisible(true)
-		theCourseMenu.setVisible(true);
+		courseMenu.setVisible(true);
+
 	}
 
+	/*
+	 * For person check if person is logout
+	 */
 	public boolean ifLogout() {
-		return theCourseMenu.ifLogout();
+
+		return courseMenu.ifLogout();
+
 	}
 
-	// show the assignment list
+	/*
+	 * show the assignment list
+	 */
 	public boolean showMenu() {
+
 		// create a iterator for the assignment list
 		// Iterator theIter=new ListIterator(CurrentCourse.AssList );
 		Iterator<Assignment> theIter = currentCourse.assignmentList.iterator();
-		theCourseMenu.theCourse = currentCourse;
+		courseMenu.course = currentCourse;
 		Assignment theAssignment;
 		while (theIter.hasNext()) {
 			theAssignment = (Assignment) theIter.next();
-			theCourseMenu.assignmentCombox.addItem(theAssignment);
+			courseMenu.assignmentCombox.addItem(theAssignment);
 		}
 		return false;
+
 	}
 
+	/*
+	 * get the course list
+	 */
 	public ClassCourseList getCourseList() {
+
 		return courseList;
+
 	}
 
+	/*
+	 * add the course to course list
+	 */
 	public void addCourse(Course theCourse) {
+
 		courseList.add(theCourse);
+
 	}
 }

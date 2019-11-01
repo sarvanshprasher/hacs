@@ -13,36 +13,37 @@ package hacs;
 
 public class Hacs {
 
-	static Facade theFacade = new Facade();
+	static Facade Facade = new Facade();
 	public static Facade facade;
 
 	public Hacs() {
 	}
 
+	/*
+	 * Main method for checking if user is able to login and perform the tasks
+	 * related to a particular course.
+	 */
 	public static void main(String[] args) {
-		// String strUsername;
-		// String strUserType = null;
+
 		UserInfoItem userinfoitem = new UserInfoItem();
-		theFacade.createCourseList();
+		Facade.createCourseList();
 		while (true) {
-			boolean bExit = false;
-			bExit = Facade.login(userinfoitem);
-			if (bExit)
+			boolean logout = false;
+			logout = hacs.Facade.login(userinfoitem);
+			if (logout)
 				break;
-			// userinfoitem.strUserName = "Inst1";
-			// userinfoitem.UserType = 1;
-			theFacade.createUser(userinfoitem);
-			theFacade.attachCourseToUser();
-			if (userinfoitem.UserType == UserInfoItem.USER_TYPE.Student) // if is a student remind him of the due date
-				theFacade.remind();
+			Facade.createUser(userinfoitem);
+			Facade.attachCourseToUser();
+			if (userinfoitem.UserType == UserInfoItem.USER_TYPE.Student)
+				Facade.remind();
 			boolean bLogout = false;
 			while (!bLogout) {
-				bLogout = theFacade.selectCourse();
+				bLogout = Facade.selectCourse();
 				if (bLogout)
 					break;
-				bLogout = theFacade.courseOperation();
+				bLogout = Facade.courseOperation();
 			}
 		}
-		// System.out.println(userinfoitem.strUserName +userinfoitem.UserType );
+
 	}
 }

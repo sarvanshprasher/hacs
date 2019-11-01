@@ -14,16 +14,15 @@ import java.awt.event.*;
  */
 
 public class CourseSelectDlg extends JDialog {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	// 0 HighLevel presentation 1 LowLevel Experiment
 	ClassCourseList theCourseList;
 	Course selectedCourse;
 	int nCourseLevel = 0;
+	CourseLevel courseLevel = null;
 	boolean mbLogout = false;
-	
+
 	// Changed this to Course JComboBox
 	JComboBox<Course> courseNameCom = new JComboBox<Course>();
 	JRadioButton highLevelRadio = new JRadioButton();
@@ -92,32 +91,42 @@ public class CourseSelectDlg extends JDialog {
 		{
 			courseNameCom.addItem(theCourse);
 		}
-		
-		// Changed this set visible true when course dialog box needs to be shown 
+
+		// Changed this set visible true when course dialog box needs to be shown
 		setVisible(true);
 		return selectedCourse;
 	}
 
 	void okButtonActionPerformed(ActionEvent e) {
+
 		selectedCourse = (Course) courseNameCom.getSelectedItem();
 		if (highLevelRadio.isSelected())
-			nCourseLevel = 0; // highlevel course: 0
-		else
-			nCourseLevel = 1; // lowlevel course: 1
-		
-		// Changed this hide function to setVisible(false) when ok button action is perfomed. 
-		setVisible(false);
+
+			nCourseLevel = 0;
+
+		else {
+
+			nCourseLevel = 1;
+
+			// Changed this hide function to setVisible(false) when ok button action is
+			// perfomed.
+			setVisible(false);
+
+		}
 	}
 
 	public boolean isLogout() {
+
 		return mbLogout;
 	}
 
 	void buttonLogoutActionPerformed(ActionEvent e) {
+
 		mbLogout = true;
-		
-		// Changed this hide function to setVisible(false) when logout button action is pressed. 
+
+		// Changed this hide function to setVisible(false) when logout button action is
+		// pressed.
 		setVisible(false);
-		
+
 	}
 }

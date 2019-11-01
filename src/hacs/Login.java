@@ -22,30 +22,32 @@ import java.io.*;
 public class Login extends JDialog {
 
 	private static final long serialVersionUID = 1L;
-	boolean mbExit = false;
+	boolean logout = false;
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel2 = new JLabel();
 	JButton loginButton = new JButton();
 	JButton buttonExit = new JButton();
-	JTextField userNameText = new JTextField();
-	JPasswordField passwordText = new JPasswordField();
+	JTextField userName = new JTextField();
+	JPasswordField password = new JPasswordField();
 	JRadioButton studentRadio = new JRadioButton();
 	JRadioButton instructorRadio = new JRadioButton();
 	ButtonGroup buttonGroup1 = new ButtonGroup();
-	////// Attributes Added By me
 	private String userBox = null;
-	private USER_TYPE userType = USER_TYPE.Student; // default to Student
+	private USER_TYPE userType = USER_TYPE.Student;
 
 	public Login() {
+
 		try {
 			jbInit();
 			setSize(300, 300);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	private void jbInit() throws Exception {
+
 		this.getContentPane().setLayout(null);
 		jLabel1.setText("UserName");
 		jLabel1.setBounds(new Rectangle(26, 52, 80, 18));
@@ -65,8 +67,8 @@ public class Login extends JDialog {
 				buttonExitActionPerformed(e);
 			}
 		});
-		userNameText.setBounds(new Rectangle(119, 52, 144, 22));
-		passwordText.setBounds(new Rectangle(118, 119, 147, 22));
+		userName.setBounds(new Rectangle(119, 52, 144, 22));
+		password.setBounds(new Rectangle(118, 119, 147, 22));
 		studentRadio.setSelected(true);
 		studentRadio.setText("Student");
 		studentRadio.setBounds(new Rectangle(37, 164, 103, 26));
@@ -76,41 +78,45 @@ public class Login extends JDialog {
 		this.getContentPane().add(jLabel2, null);
 		this.getContentPane().add(loginButton, null);
 		this.getContentPane().add(buttonExit, null);
-		this.getContentPane().add(userNameText, null);
-		this.getContentPane().add(passwordText, null);
+		this.getContentPane().add(userName, null);
+		this.getContentPane().add(password, null);
 		this.getContentPane().add(studentRadio, null);
 		this.getContentPane().add(instructorRadio, null);
 		buttonGroup1.add(studentRadio);
 		buttonGroup1.add(instructorRadio);
+
 	}
 
+	/*
+	 * 
+	 * This function check if login button action is performed or not
+	 */
 	void loginButtonActionPerformed(ActionEvent e) {
+
 		BufferedReader file;
-		mbExit = false;
-		System.out.println("login clicked");
+		logout = false;
 		try {
-			if (studentRadio.isSelected() == true)//// student
-			{
-				userType = USER_TYPE.Student; /// 0 for student
+			if (studentRadio.isSelected() == true) {
+				userType = USER_TYPE.Student;
 				file = new BufferedReader(new FileReader("StuInfo.txt"));
-			} else// instructor
-			{
-				userType = USER_TYPE.Instructor; // 1 for instructor
+			} else {
+				userType = USER_TYPE.Instructor;
 				file = new BufferedReader(new FileReader("InsInfor.txt"));
 			}
-			userBox = userNameText.getText();
-			String PasswordBox = new String(passwordText.getPassword());
-			String LoginName = null;
-			String aline = null, UserName = null, Password = null;
-			while ((aline = file.readLine()) != null) {
-				UserName = getUserName(aline);
-				Password = getPassword(aline);
-				if (UserName.compareTo(userBox) == 0 && Password.compareTo(PasswordBox) == 0)
-					LoginName = UserName;
-			}
-			if (LoginName != null) {
+			userBox = userName.getText();
+			String passwordBox = new String(password.getPassword());
+			String loginName = null;
+			String endOfLine = null, userName = null, password = null;
+			while ((endOfLine = file.readLine()) != null) {
 
-				// If login name not null then setVisible(false) for login button
+				userName = getUserName(endOfLine);
+				password = getPassword(endOfLine);
+				if (userName.compareTo(userBox) == 0 && password.compareTo(passwordBox) == 0)
+					loginName = userName;
+
+			}
+			if (loginName != null) {
+
 				this.setVisible(false);
 
 			}
@@ -123,36 +129,56 @@ public class Login extends JDialog {
 	/*
 	 * get the user name from aline UserName:Password
 	 */
-	private String getUserName(String aline) {
-		int Sep = aline.lastIndexOf(':');
-		return aline.substring(0, Sep);
+	private String getUserName(String endOfLine) {
+
+		int seperator = endOfLine.lastIndexOf(':');
+		return endOfLine.substring(0, seperator);
+
 	}
 
 	/*
 	 * get the password from aline UserName:Password
 	 */
-	private String getPassword(String aline) {
-		int Sep = aline.lastIndexOf(':');
-		return aline.substring(Sep + 1, aline.length());
+	private String getPassword(String endOfLine) {
+
+		int seperator = endOfLine.lastIndexOf(':');
+		return endOfLine.substring(seperator + 1, endOfLine.length());
+
 	}
 
-	/* after login get the UserName of the login interface */
+	/*
+	 * after login get the UserName of the login interface
+	 */
 	public String getUserName() {
+
 		return userBox;
+
 	}
 
-	/* after login get the userType of the login interface */
+	/*
+	 * after login get the userType of the login interface
+	 */
 	public USER_TYPE getUserType() {
+
 		return userType;
+
 	}
 
+	/*
+	 * after exit option get the login interface
+	 */
 	public boolean isExit() {
-		return mbExit;
+
+		return logout;
+
 	}
 
+	/*
+	 * after clicking exit button action do logout true and set visibility to false
+	 */
 	void buttonExitActionPerformed(ActionEvent e) {
-		mbExit = true;
 
+		logout = true;
 		// If exit button action perfomed then setVisible(false) for exit button
 		this.setVisible(false);
 

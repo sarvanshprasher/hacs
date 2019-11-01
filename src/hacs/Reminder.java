@@ -14,9 +14,7 @@ import java.awt.event.*;
  */
 
 public class Reminder extends JDialog {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	ClassCourseList courseList;
 	JLabel jLabel1 = new JLabel();
@@ -26,6 +24,7 @@ public class Reminder extends JDialog {
 	Button buttonOK = new Button();
 
 	public Reminder() {
+
 		try {
 			jbInit();
 			setModal(true);
@@ -33,9 +32,11 @@ public class Reminder extends JDialog {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	private void jbInit() throws Exception {
+
 		jLabel1.setText("Upcoming assignments");
 		jLabel1.setBounds(new Rectangle(38, 40, 159, 17));
 		this.getContentPane().setLayout(null);
@@ -55,16 +56,24 @@ public class Reminder extends JDialog {
 		this.getContentPane().add(listUpcoming, null);
 		this.getContentPane().add(listOverdue, null);
 		this.getContentPane().add(buttonOK, null);
+
 	}
 
+	/*
+	 * This function shows the reminder
+	 */
 	void showReminder(ClassCourseList courseList) {
-		ReminderVisitor visitor = new ReminderVisitor(this);
-		visitor.visitFacade(Hacs.theFacade);
 
+		ReminderVisitor visitor = new ReminderVisitor(this);
+		visitor.visitFacade(Hacs.Facade);
 		// Set visible(true) for showing reminder for assignments to person.
 		setVisible(true);
+
 	}
 
+	/*
+	 * This function gets triggered after Ok button is perfomed.
+	 */
 	void buttonOkActionPerformed(ActionEvent e) {
 
 		// Set visible(false) after ok action is clicked by person.

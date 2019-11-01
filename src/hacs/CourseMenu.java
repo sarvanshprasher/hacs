@@ -11,16 +11,14 @@ import java.util.Iterator;
  * @author Zhang ji Zhu Wei
  * @version 1.0
  * @author Sarvansh Prasher
- * @version 2.0 
+ * @version 2.0
  */
 
 abstract public class CourseMenu extends JDialog {
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
-	Course theCourse;
-	boolean bLogout = true;
+	Course course;
+	boolean logout = true;
 
 	JRadioButton assignmentRadiao = new JRadioButton();
 	JComboBox<Assignment> assignmentCombox = new JComboBox<Assignment>();
@@ -35,6 +33,9 @@ abstract public class CourseMenu extends JDialog {
 	JButton buttonChangeCourse = new JButton();
 	JButton buttonLogout = new JButton();
 
+	/*
+	 * This function constructs the course menu object
+	 */
 	public CourseMenu() {
 
 		try {
@@ -44,9 +45,14 @@ abstract public class CourseMenu extends JDialog {
 		}
 		setModal(true);
 		setSize(503, 294);
+
 	}
 
+	/*
+	 * This function calls the jbInit swing menu object
+	 */
 	private void jbInit() throws Exception {
+
 		buttonChangeCourse.setText("ChangeCourse");
 		buttonChangeCourse.setBounds(new Rectangle(101, 211, 73, 37));
 		buttonChangeCourse.addActionListener(new java.awt.event.ActionListener() {
@@ -65,6 +71,7 @@ abstract public class CourseMenu extends JDialog {
 		});
 		this.getContentPane().add(buttonChangeCourse, null);
 		this.getContentPane().add(buttonLogout, null);
+
 	}
 
 	/*
@@ -89,38 +96,68 @@ abstract public class CourseMenu extends JDialog {
 
 	abstract void showLabel();
 
+	/*
+	 * When assignment add action button is cliced, we pass ActionEvent to perform
+	 * action
+	 */
 	void assignmentAddButtonActionPerformed(ActionEvent e) {
-		Hacs.theFacade.addAssignment(theCourse);
+
+		Hacs.Facade.addAssignment(course);
 		refresh();
+
 	}
 
+	/*
+	 * When assignment view action button is cliced, we pass ActionEvent to perform
+	 * action
+	 */
 	void assignmentViewButtonActionPerformed(ActionEvent e) {
+
 		Assignment theAss = (Assignment) assignmentCombox.getSelectedItem();
-		Hacs.theFacade.viewAssignment(theAss);
+		Hacs.Facade.viewAssignment(theAss);
+
 	}
 
+	/*
+	 * Refresh method while generating course menu
+	 */
 	void refresh() {
+
 		assignmentCombox.removeAllItems();
-		Iterator<Assignment> Iter = theCourse.assignmentList.iterator();
+		Iterator<Assignment> Iter = course.assignmentList.iterator();
 		while (Iter.hasNext()) {
+
 			assignmentCombox.addItem(Iter.next());
+
 		}
+
 	}
 
-	
-	// Changed the hide function to setVisible(false) when change course action is performed.
+	/*
+	 * Changed the hide function to setVisible(false) when change course action is
+	 * performed
+	 */
 	void buttonChangeCourseActionPerformed(ActionEvent e) {
-		bLogout = false;
+
+		logout = false;
 		setVisible(false);
+
 	}
 
-	// Changed the hide function to setVisible(false) when logout action is performed
+	/*
+	 * Changed the hide function to setVisible(false) when logout action is
+	 * performed
+	 */
 	void buttonLogoutActionPerformed(ActionEvent e) {
-		bLogout = true;
+
+		logout = true;
 		setVisible(false);
+
 	}
 
 	boolean ifLogout() {
-		return bLogout;
+
+		return logout;
+
 	}
 }

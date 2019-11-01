@@ -19,44 +19,45 @@ import java.text.DateFormat;
 
 public class Assignment {
 
-	protected String assName;
-	protected String strAssignmentFilename;
+	protected String assignmentName;
+	protected String assignmentFilename;
 	protected Date dueDate = new Date();
-	protected String assSpec;
-	protected SolutionList theSolutionList = new SolutionList();
+	protected String assSpecification;
+	protected SolutionList solutionList = new SolutionList();
 	protected Solution suggestSolution = new Solution();
 
 	/*
-	* This function is constructor.
-	* 
-	*/
+	 * This function is constructor.
+	 * 
+	 */
 	public Assignment() {
 	}
 
 	/*
-	* This function sets the due date for assignment.
-	* 
-	*/
+	 * This function sets the due date for assignment.
+	 * 
+	 */
 	public void setDueDate(Date theDueDate) {
 
 		this.dueDate = theDueDate;
 
 	}
-	
+
 	/*
-	* This function sets the specification for assignment.
-	* 
-	*/
+	 * This function sets the specification for assignment.
+	 * 
+	 */
 	public void setAssSpec(String theSpec) {
 
-		this.assSpec = theSpec;
+		this.assSpecification = theSpec;
 
 	}
-	
+
 	/*
-	* This function check the overDue for assignment.
-	* @return boolean isOverDue
-	*/
+	 * This function check the overDue for assignment.
+	 * 
+	 * @return boolean isOverDue
+	 */
 	public boolean isOverDue() {
 
 		Date today;
@@ -70,9 +71,10 @@ public class Assignment {
 	}
 
 	/*
-	* This function checks the addition of solution.
-	* @return Solution
-	*/
+	 * This function checks the addition of solution.
+	 * 
+	 * @return Solution
+	 */
 	public Solution addSolution() {
 
 		Solution mySolution = new Solution();
@@ -81,19 +83,19 @@ public class Assignment {
 	}
 
 	/*
-	* This function checks the addition of solution in list.
-	* 
-	*/
+	 * This function checks the addition of solution in list.
+	 * 
+	 */
 	public void addSolution(Solution theSolution) {
 
-		theSolutionList.add(theSolution);
+		solutionList.add(theSolution);
 
 	}
 
 	/*
-	* This function does the submission of solution.
-	* 
-	*/
+	 * This function does the submission of solution.
+	 * 
+	 */
 	public void submitSolution() throws IOException {
 
 		String fileContent = "Solution 1: Problem 1 solution";
@@ -102,63 +104,69 @@ public class Assignment {
 		writer.close();
 
 	}
-	
+
 	/*
-	* This function gets solution list.
-	* @return SolutionList
-	*/
+	 * This function gets solution list.
+	 * 
+	 * @return SolutionList
+	 */
 	public SolutionList getSolutionList() {
 
-		return this.theSolutionList;
+		return this.solutionList;
 
 	}
 
 	/*
-	* This function checks the getting of solution.
-	* @return Solution
-	*/
+	 * This function checks the getting of solution.
+	 * 
+	 * @return Solution
+	 */
 	public Solution getSolution(String studentname) {
 
-		Iterator<Solution> Iterator = theSolutionList.iterator();
+		Iterator<Solution> Iterator = solutionList.iterator();
 		return (Solution) Iterator.next();
 
 	}
 
 	/*
-	* This function does the getting of suggested solution.
-	* @return Solution
-	*/
+	 * This function does the getting of suggested solution.
+	 * 
+	 * @return Solution
+	 */
 	public Solution getSugSolution() {
 
 		return suggestSolution;
 
 	}
-	
+
 	/*
-	* This function does the getting of solution iterator.
-	* @return SolutionIterator
-	*/
+	 * This function does the getting of solution iterator.
+	 * 
+	 * @return SolutionIterator
+	 */
 	public SolutionIterator getSolutionIterator() {
 
-		SolutionIterator theSolutionIterator = new SolutionIterator(theSolutionList);
+		SolutionIterator theSolutionIterator = new SolutionIterator(solutionList);
 		return theSolutionIterator;
 
 	}
-	
+
 	/*
-	* This function converts the assignment name to string.
-	* @return String
-	*/
+	 * This function converts the assignment name to string.
+	 * 
+	 * @return String
+	 */
 	public String toString() {
 
-		return assName;
+		return assignmentName;
 
 	}
-	
+
 	/*
-	* This function gets the assignment due date to string.
-	* @return String
-	*/
+	 * This function gets the assignment due date to string.
+	 * 
+	 * @return String
+	 */
 	public String getDueDateString() {
 
 		DateFormat dateFormat = DateFormat.getDateInstance(DateFormat.SHORT);
@@ -167,19 +175,20 @@ public class Assignment {
 	}
 
 	/*
-	* This function gets the assignment specification.
-	* @return String
-	*/
+	 * This function gets the assignment specification.
+	 * 
+	 * @return String
+	 */
 	public String getAssSpec() {
 
-		return assSpec;
+		return assSpecification;
 
 	}
 
 	/*
-	* This function accepts the node visitor and redirects it to visit assignment.
-	* 
-	*/
+	 * This function accepts the node visitor and redirects it to visit assignment.
+	 * 
+	 */
 	public void accept(NodeVisitor visitor) {
 
 		visitor.visitAssignment(this);

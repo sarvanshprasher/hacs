@@ -11,40 +11,72 @@ import java.util.Iterator;
  * @version 2.0
  */
 
-@SuppressWarnings("rawtypes")
-public class CourseIterator implements Iterator {
-	ClassCourseList theCourseList;
+
+public class CourseIterator implements Iterator<Object> {
+
+	ClassCourseList courseList;
 	int currentCourseNumber = -1;
 
 	public CourseIterator() {
 	}
 
-	public CourseIterator(ClassCourseList courseList) {
-		theCourseList = courseList;
+	/*
+	 * This function sets the course list into constructor
+	 * 
+	 * @return Course
+	 */
+	public CourseIterator(ClassCourseList classCourseList) {
+
+		courseList = classCourseList;
+
 	}
 
+	/*
+	 * This function check if the course has next element in course list.
+	 * 
+	 * @return boolean
+	 */
 	public boolean hasNext() {
-		if (currentCourseNumber >= theCourseList.size() - 1)
+
+		if (currentCourseNumber >= courseList.size() - 1)
 			return false;
 		else
 			return true;
+
 	}
 
+	/*
+	 * This function gets the next object Course.
+	 * 
+	 * @return Course
+	 */
 	public Object next() {
+
 		if (hasNext() == true) {
 			currentCourseNumber++;
-			return theCourseList.get(currentCourseNumber);
+			return courseList.get(currentCourseNumber);
 		} else {
 			return null;
 		}
+
 	}
 
+	/*
+	 * This function removes the course which is in position of currentCourseNumber
+	 */
 	public void remove() {
-		theCourseList.remove(currentCourseNumber);
+
+		courseList.remove(currentCourseNumber);
+
 	}
 
-	// the next Course that fits the given CourseName
+	/*
+	 * This function gets the next object Course that fits the given CourseName
+	 * 
+	 * @return Course
+	 */
 	public Object next(String courseName) {
+
 		Course theCourse;
 		theCourse = (Course) next();
 		while (theCourse != null) {
@@ -54,6 +86,7 @@ public class CourseIterator implements Iterator {
 			theCourse = (Course) next();
 		}
 		return null;
+
 	}
 
 }
