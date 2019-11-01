@@ -14,6 +14,7 @@ package hacs;
 public class Hacs {
 
 	static Facade theFacade = new Facade();
+	public static Facade facade;
 
 	public Hacs() {
 	}
@@ -25,7 +26,7 @@ public class Hacs {
 		theFacade.createCourseList();
 		while (true) {
 			boolean bExit = false;
-			bExit = Facade.Login(userinfoitem);
+			bExit = Facade.login(userinfoitem);
 			if (bExit)
 				break;
 			// userinfoitem.strUserName = "Inst1";

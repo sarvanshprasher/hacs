@@ -17,18 +17,17 @@ import java.io.*;
 @SuppressWarnings("serial")
 public class ClassCourseList extends ArrayList<Course> {
 
-	
 	/*
-	* This function is constructor.
-	* 
-	*/
+	 * This function is constructor.
+	 * 
+	 */
 	public ClassCourseList() {
 	}
 
 	/*
-	* This function gets the classes from file in string.
-	* 
-	*/
+	 * This function gets the classes from file in string.
+	 * 
+	 */
 	@SuppressWarnings("resource")
 	public void initializeFromFile(String theFileName) {
 		try {
@@ -43,15 +42,16 @@ public class ClassCourseList extends ArrayList<Course> {
 			}
 		} catch (Exception ee) {
 			;
-		}finally {
-			
+		} finally {
+
 		}
 	}
 
 	/*
-	* This function finds the course by course name
-	* @return Course
-	*/
+	 * This function finds the course by course name
+	 * 
+	 * @return Course
+	 */
 	public Course findCourseByCourseName(String CourseName) {
 		int nCourseCount = size();
 		for (int i = 0; i < nCourseCount; i++) {

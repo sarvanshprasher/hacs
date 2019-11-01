@@ -22,8 +22,8 @@ public class Course {
   int courseLevel;
   
   /*
-   * This function finds the course by course name
-   * @return Course
+   * This function is constructor
+   * 
    */
   public Course(String strCourse, int theLevel) {
     this.courseName = strCourse;
@@ -34,24 +34,40 @@ public class Course {
     this.numOfAss = 0;
   }
   
+  /*
+   * This function adds the assignment
+   * 
+   */
   public void addAssignment(Assignment newAss){
 	  
     assignmentList.add(newAss);
     
   }
   
+  /*
+  * This function gets the course name to string
+  * 
+  */
   public String toString(){
 	  
     return courseName;
     
   }
   
+  /*
+   * This function accepts the node visitor and redirects it to visit course.
+   * 
+   */
   void accept(NodeVisitor visitor){
 	  
     visitor.visitCourse(this);
     
   }
   
+  /*
+  * This function gets the assignment list.
+  * 
+  */
   public int getListSize() { 
 	  
 	return assignmentList.size();	 

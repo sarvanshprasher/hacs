@@ -24,7 +24,7 @@ public class Facade {
 	public Facade() {
 	}
 
-	static public boolean Login(UserInfoItem userinfoItem) {
+	static public boolean login(UserInfoItem userinfoItem) {
 		Login login = new Login();
 		login.setModal(true);
 
@@ -105,8 +105,9 @@ public class Facade {
 	}
 
 	//////////
-	void remind() {
+	public void remind() {
 		Reminder theReminder = new Reminder();
+		System.out.println("2hh");
 		theReminder.showReminder(thePerson.getCourseList());
 	}
 

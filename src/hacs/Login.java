@@ -21,11 +21,8 @@ import java.io.*;
 
 public class Login extends JDialog {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	boolean m_bExit = false;
+	boolean mbExit = false;
 	JLabel jLabel1 = new JLabel();
 	JLabel jLabel2 = new JLabel();
 	JButton loginButton = new JButton();
@@ -89,7 +86,7 @@ public class Login extends JDialog {
 
 	void loginButtonActionPerformed(ActionEvent e) {
 		BufferedReader file;
-		m_bExit = false;
+		mbExit = false;
 		System.out.println("login clicked");
 		try {
 			if (studentRadio.isSelected() == true)//// student
@@ -150,11 +147,11 @@ public class Login extends JDialog {
 	}
 
 	public boolean isExit() {
-		return m_bExit;
+		return mbExit;
 	}
 
 	void buttonExitActionPerformed(ActionEvent e) {
-		m_bExit = true;
+		mbExit = true;
 
 		// If exit button action perfomed then setVisible(false) for exit button
 		this.setVisible(false);
