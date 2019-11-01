@@ -25,7 +25,7 @@ abstract public class Person {
 	public Person() {
 
 		courseList = new ClassCourseList();
-
+		courseList.initializeFromFile("CourseInfo.txt");
 	}
 
 	/*

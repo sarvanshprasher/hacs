@@ -65,5 +65,5 @@ public class ClassCourseList extends ArrayList<Course> {
 		return course;
 
 	}
-
+	
 }

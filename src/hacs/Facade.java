@@ -29,13 +29,15 @@ public class Facade {
 	 * This function checks if login was successfull or not
 	 */
 	static public boolean login(UserInfoItem userinfoItem) {
-
+		
+		System.out.println("Logging in for the user");
 		Login login = new Login();
 		login.setModal(true);
 		// set login show to setVisible(true).
 		login.setVisible(true);
 		userinfoItem.strUserName = login.getUserName();
 		userinfoItem.UserType = login.getUserType();
+		System.out.println("Logged in for the user");
 		return login.isExit();
 
 	}
@@ -135,6 +137,8 @@ public class Facade {
 
 	public void createUser(UserInfoItem userinfoitem) {
 
+		System.out.println("Creating user");
+		
 		if (userinfoitem.getUserType() == UserType.Student) /// student
 		{
 			person = new Student();
@@ -152,6 +156,7 @@ public class Facade {
 	 */
 	public void createCourseList() {
 
+		System.out.println("You are creating course list");
 		courseList = new ClassCourseList();
 		courseList.initializeFromFile("CourseInfo.txt");
 
